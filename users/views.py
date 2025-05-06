@@ -12,6 +12,7 @@ def user_register_view(request):
         mob = data.get("mbl")
         firstn = data.get("fn")
         lastn = data.get("ln")
+        pic=request.FILES.get("pro_pic")
         pswd = data.get("psw")
         cpassword = data.get("cpsw")
         if pswd!=cpassword:
@@ -21,7 +22,7 @@ def user_register_view(request):
             messages.warning(request, "The username you given is already taken")
             return redirect("/users/register/")
         usr = User.objects.create_user(username=usern, email=em, first_name=firstn, last_name=lastn, password=pswd)
-        Profile.objects.create(mobile=mob, user=usr)
+        Profile.objects.create(mobile=mob, user=usr, profile_pic=pic)
         messages.success(request, "Your account ah been created successfully.")
     return render(request, "users/user_register.html")  
 

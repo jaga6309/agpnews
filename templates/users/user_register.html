@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="container mt-5">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="mb-3">
           <label for="idUsername" class="form-label">User Name</label>
@@ -23,6 +23,10 @@
         <div class="mb-3">
             <label for="idLastName" class="form-label">Last Name</label>
             <input type="text" class="form-control" id="idLastName" name="ln">
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Profile Pic</label>
+            <input class="form-control" type="file" id="formFile" name="pro_pic">
         </div>
         <div class="mb-3">
           <label for="idPassword" class="form-label">Password</label>
