@@ -39,7 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'news',
     'users',
+    'students',
+    'super_admin',
     'django_ckeditor_5',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -128,6 +132,8 @@ STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
 
 MEDIA_ROOT = BASE_DIR / "media"
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
 
