@@ -1,6 +1,60 @@
 from django.urls import path
-from super_admin.views import super_admin_dashboard_view
+from super_admin.views import (super_admin_dashboard_view,
+                               super_admin_profile_view,
+                               super_admin_password_change_view,
+                               super_admin_user_list_view,
+                               super_admin_user_detail_view,
+                               super_admin_user_create_view,
+                               super_admin_user_update_view,
+                               super_admin_user_delete_view,
+                               super_admin_user_activate_view,
+                               super_admin_user_dactivate_view,
+                               super_admin_category_list_view,
+                               super_admin_category_create_view,
+                               super_admin_category_update_view,
+                               super_admin_category_detail_view,
+                               super_admin_category_delete_view,
+                               super_admin_tag_create_view,
+                               super_admin_tag_update_view,
+                               super_admin_tag_delete_view,
+                               super_admin_article_list_view,
+                               super_admin_article_create_view,
+                               super_admin_article_update_view,
+                               super_admin_article_detail_view,
+                               super_admin_article_delete_view,
+                               super_admin_article_status_update_view,
+                               super_admin_article_publish_view,
+                               super_admin_article_unpublish_view
+)
 
 urlpatterns = [
-    path("dashboard/", super_admin_dashboard_view)
+    path("dashboard/", super_admin_dashboard_view),
+    path("profile/", super_admin_profile_view),
+    path("password-change/", super_admin_password_change_view),
+    path("user-list/", super_admin_user_list_view),
+    path("user-detail/<int:pk>/", super_admin_user_detail_view),
+    path("user-create/", super_admin_user_create_view),
+    path("user-update/<int:pk>/", super_admin_user_update_view),
+    path("user-delete/<int:pk>/", super_admin_user_delete_view),
+    path("user-list/<int:pk>/", super_admin_user_activate_view),
+    path("user-list/<int:pk>/", super_admin_user_dactivate_view),
+
+    path("category-list/", super_admin_category_list_view),
+    path("category-create/", super_admin_category_create_view),
+    path("category-update/<int:pk>/", super_admin_category_update_view),
+    path("category-detail/<int:pk>/", super_admin_category_detail_view),
+    path("category-delete/<int:pk>/", super_admin_category_delete_view),
+
+    path("tag-create/", super_admin_tag_create_view),
+    path("tag-update/<int:pk>/", super_admin_tag_update_view),
+    path("tag-delete/<int:pk>/", super_admin_tag_delete_view),
+
+    path("article-list/", super_admin_article_list_view),
+    path("article-create/", super_admin_article_create_view),
+    path("article-update/<int:pk>/", super_admin_article_update_view),
+    path("article-detail/<int:pk>/", super_admin_article_detail_view),
+    path("srticle-delete/<int:pk>/", super_admin_article_delete_view),
+    path("article-status-update-create/<int:pk>/", super_admin_article_status_update_view),
+    path("article-publish/<int:pk>/", super_admin_article_publish_view),
+    path("article-unpublish/<int:pk>/", super_admin_article_unpublish_view),
 ]

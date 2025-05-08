@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'news',
     'users',
-    'students',
     'super_admin',
     'django_ckeditor_5',
     'crispy_forms',
