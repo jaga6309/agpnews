@@ -1,32 +1,151 @@
 {% extends 'dashboard/dashboard_base.html' %}
+{% block css %}
+    <style>
+        .header{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+{% endblock  %}
 {% block content %}
-<h1 class="mt-4">Create User</h1>
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item"><a href="/super_admin/dashboard/">Dashboard</a></li>
-    <li class="breadcrumb-item active">Create User</li>
-</ol>
+<h1 class="mt-4">Update User</h1>
+<div class="header">
+    <div>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="/super_admin/dashboard/">Dashboard</a></li>
+            <li class="breadcrumb-item active">Create User</li>
+        </ol>
+    </div>
+    <div>
+        <a href="/super_admin/user-list/"class="btn btn-primary btn-sm">
+            <i class="fas fa-arrow-left me-1"></i>
+            User lists
+        </a>
+    </div>
+</div>
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        Create User
+        Update User
     </div>
     <div class="card-body">
-        <form>
+        <form method="POST"  onsubmit="handleSubmit(event)">
+            {% csrf_token %}
+
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <label for="exampleInputusern1" class="form-label">User Name</label>
+              <input type="text" name="username" class="form-control" id="exampleInputusern1" aria-describedby="usernHelp" value="{{user.username}}">
+              <div id="usernHelp" class="form-text">mention username.</div>
+              <div id="idusernameerror"></div>
+            </div> 
+
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email</label>
+              <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{user.email}}">
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              <div id="idEmailError"></div>
             </div>
+
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <label for="exampleInputFirstN1" class="form-label">First Name</label>
+              <input type="text" name="first_name" class="form-control" id="exampleInputFirstN1" aria-describedby="FirstNHelp" value="{{user.first_name}}">
+              <div id="firstnameHelp" class="form-text">enter the first name.</div>
+               <div id="idFirstnameError"></div>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputLastN1" class="form-label">Last Name</label>
+              <input type="text" name="last_name" class="form-control" id="exampleInputLastN1" aria-describedby="LastNHelp" value="{{user.last_name}}">
+              <div id="lastnHelp" class="form-text">enter the last name.</div>
+               <div id="idLastnameError"></div>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputMobile1" class="form-label">Mobile Number</label>
+              <input type="mobile" name="mobile" class="form-control" id="exampleInputmobile1" value="{{user.profile.mobile}}">
+              <div id="mobilenHelp" class="form-text">enter the mobile number.</div>
+               <div id="idMobileError"></div>
             </div>
             <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              <label for="examplecheckmeout" class="form-label">check me out</output></label>
+              <input type="checkbox" class="form-check-input" id="examplecheckmeout" name="checkmeout">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <input type="submit" class="btn btn-primary">
+            
         </form>
     </div>
 </div>
+{% endblock %}
+
+{% block js %}
+<script>
+  function handleSubmit(event){
+
+    event.preventDefault()
+    let isFormValid=true;
+
+    let usernamevalue=document.getElementById("exampleInputusern1").value.trim();
+    let errorUsernameElement=document.getElementById("idusernameerror");
+    
+    let emailvalue=document.getElementById("exampleInputEmail1").value.trim();
+    let errorEmailElement=document.getElementById("idEmailError");
+    
+    let firstnamevalue=document.getElementById("exampleInputFirstN1").value.trim();
+    let errorFirstnameElement=document.getElementById("idFirstnameError");
+
+    let lastnamevalue=document.getElementById("exampleInputLastN1").value.trim();
+    let errorLastnameElement=document.getElementById("idLastnameError");
+
+    let mobilevalue=document.getElementById("exampleInputmobile1").value.trim();
+    let errorMobileElement=document.getElementById("idMobileError")
+
+
+
+    errorUsernameElement.textContent="";
+    errorEmailElement.textContent="";
+    errorFirstnameElement.textContent="";
+    errorLastnameElement.textContent="";
+    errorMobileElement.textContent="";
+
+
+    if(usernamevalue==""){
+      errorUsernameElement.textContent ="please enter your username";
+      errorUsernameElement.style.color="red";
+      isFormValid=false;
+    }
+
+    if(emailvalue==""){
+      errorEmailElement.textContent="please enter your email";
+      errorEmailElement.style.color="red";
+      isFormValid=false;
+    }
+
+    if(firstnamevalue==""){
+      errorFirstnameElement.textContent="please enter your first name";
+      errorFirstnameElement.style.color="red";
+      isFormValid=false;
+    }
+
+    if(lastnamevalue==""){
+      errorLastnameElement.textContent="please enter your last name";
+      errorLastnameElement.style.color="red";
+      isFormValid=false;
+    }
+
+    if(mobilevalue==""){
+      errorMobileElement.textContent="please enter your Mobile number";
+      errorMobileElement.style.color="red";
+      isFormValid=false;
+    }
+
+  
+
+    let form = event.target;
+    if(isFormValid){
+      form.submit();
+    }
+   }
+  
+ </script>
 {% endblock %}

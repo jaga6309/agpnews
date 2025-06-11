@@ -16,7 +16,9 @@ from super_admin.views import (super_admin_dashboard_view,
                                super_admin_category_delete_view,
                                super_admin_tag_create_view,
                                super_admin_tag_update_view,
+                               super_admin_tag_list_view,
                                super_admin_tag_delete_view,
+                               super_admin_tag_details_view,
                                super_admin_article_list_view,
                                super_admin_article_create_view,
                                super_admin_article_update_view,
@@ -24,7 +26,12 @@ from super_admin.views import (super_admin_dashboard_view,
                                super_admin_article_delete_view,
                                super_admin_article_status_update_view,
                                super_admin_article_publish_view,
-                               super_admin_article_unpublish_view
+                               super_admin_article_unpublish_view,
+                               super_admin_banner_list_view,
+                               super_admin_banner_create_view,
+                               super_admin_banner_update_view,
+                               super_admin_banner_detail_view,
+                               super_admin_banner_delete_view,
 )
 
 urlpatterns = [
@@ -36,8 +43,9 @@ urlpatterns = [
     path("user-create/", super_admin_user_create_view),
     path("user-update/<int:pk>/", super_admin_user_update_view),
     path("user-delete/<int:pk>/", super_admin_user_delete_view),
-    path("user-list/<int:pk>/", super_admin_user_activate_view),
-    path("user-list/<int:pk>/", super_admin_user_dactivate_view),
+    path("user-activate/<int:pk>/", super_admin_user_activate_view),
+    path("user-dactivate/<int:pk>/", super_admin_user_dactivate_view),
+    
 
     path("category-list/", super_admin_category_list_view),
     path("category-create/", super_admin_category_create_view),
@@ -45,16 +53,24 @@ urlpatterns = [
     path("category-detail/<int:pk>/", super_admin_category_detail_view),
     path("category-delete/<int:pk>/", super_admin_category_delete_view),
 
+     path("tag-list/", super_admin_tag_list_view),
     path("tag-create/", super_admin_tag_create_view),
     path("tag-update/<int:pk>/", super_admin_tag_update_view),
     path("tag-delete/<int:pk>/", super_admin_tag_delete_view),
-
+    path("tag-details/<int:pk>/", super_admin_tag_details_view),
+     
     path("article-list/", super_admin_article_list_view),
     path("article-create/", super_admin_article_create_view),
     path("article-update/<int:pk>/", super_admin_article_update_view),
     path("article-detail/<int:pk>/", super_admin_article_detail_view),
-    path("srticle-delete/<int:pk>/", super_admin_article_delete_view),
+    path("article-delete/<int:pk>/", super_admin_article_delete_view),
     path("article-status-update-create/<int:pk>/", super_admin_article_status_update_view),
     path("article-publish/<int:pk>/", super_admin_article_publish_view),
     path("article-unpublish/<int:pk>/", super_admin_article_unpublish_view),
+
+    path("banner-list/", super_admin_banner_list_view),
+    path("banner-create/", super_admin_banner_create_view),
+    path("banner-update/<int:pk>/", super_admin_banner_update_view),
+    path("banner-detail/<int:pk>/", super_admin_banner_detail_view),
+    path("banner-delete/<int:pk>/", super_admin_banner_delete_view)
 ]

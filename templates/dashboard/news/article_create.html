@@ -5,15 +5,15 @@
             display: flex;
             justify-content: space-between;
         }
-    </style>
+    </style> 
 {% endblock  %}
 {% block content %}
-<h1 class="mt-4">Create Article</h1>
+<h1 class="mt-4">create Article</h1>
 <div class="header">
     <div>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="/super_admin/dashboard/">Dashboard</a></li>
-            <li class="breadcrumb-item active">Create Article</li>
+            <li class="breadcrumb-item active">create Article</li>
         </ol>
     </div>
     <div>
@@ -26,25 +26,73 @@
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        Create Use
+        create Article
     </div>
     <div class="card-body">
-        <form>
+      <form method="post">
+            {% csrf_token %}
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <label for="idTitle" class="form-label">Title</label>
+                <input type="text" class="form-control" id="idTitle" name="title" value="{{ article.title }}">
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+                <label for="idContent" class="form-label">Content</label>
+                <textarea type="idContent" class="form-control" id="idContent" name="content" value="{{ article.content }}"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="idCategory" class="form-label">Category</label>
+                <select class="form-select" aria-label="Default select example" name="category"  value="{{ article.category }}">
+                    {% for category in categories %}
+                        <option value="{{category.id}}">{{category.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="idTags" class="form-label">Tags</label>
+                <select class="form-select" multiple aria-label="Multiple select example" name="tags" value="{{ article.tags }}">
+                    {% for tag in tags %}
+                        <option value="{{tag.id}}">{{tag.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="idStatus" class="form-label">Status</label>
+                <select class="form-select" aria-label="Default select example" name="status" value="{{ article.status }}">
+                    {% for value, label  in status_choices %}
+                        <option value="{{value}}">{{label}}</option>
+                    {% endfor %}
+                </select>
+                 <div class="mb-3 form-check">
+              <label for="exampleIsActive" class="form-label">Is_breaking</label>
+              <input type="checkbox" class="form-check-input" id="exampleIsActive" name="Is_breaking" value="{{ article.Is_breaking }}">
+            </div>
+             <div class="mb-3 form-check">
+              <label for="exampleIsActive" class="form-label">Is_trending </label>
+              <input type="checkbox" class="form-check-input" id="exampleIsActive" name="Is_trending" value="{{ article.Is_trending }}">
+            </div>
+             <div class="mb-3 form-check">
+              <label for="exampleIsActive" class="form-label">Is_featured</label>
+              <input type="checkbox" class="form-check-input" id="exampleIsActive" name="Is_featured" value="{{ article.Is_featured }}">
             </div>
             <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              <label for="exampleIsActive" class="form-label">is_sponsered</label>
+              <input type="checkbox" class="form-check-input" id="exampleIsActive" name="is_sponsered" value="{{ article.is_sponsered }}">
+            </div>
+             <div class="mb-3 form-check">
+              <label for="exampleIsActive" class="form-label">allow_comments</label>
+              <input type="checkbox" class="form-check-input" id="exampleIsActive" name="allow_comments" value="{{ article.allow_comments }}">
+            </div>
+             <div class="mb-3">
+                <label for="idreading_time" class="form-label">Reading_time</label>
+                <input type="text" class="form-control" id="idReading_time" name="Reading_time" value="{{ article.Reading_time }}">
+            </div>
+             <div class="mb-3">
+                <label for="idTitle" class="form-label">Published_at</label>
+                <input type="text" class="form-control" id="idTitle" name="published_at" value="{{ article.published_at }}">
+            </div>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </form>
     </div>
 </div>
-{% endblock %}
+{% endblock %}

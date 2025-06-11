@@ -1,0 +1,90 @@
+{% extends 'dashboard/dashboard_base.html' %}
+{% block title %}AGPNEWS - Banner Lists{% endblock %}
+{% block css %}
+    <style>
+        .header{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+{% endblock  %}
+{% block content %}
+<h1 class="mt-4">Banner Lists</h1>
+<div class="header">
+    <div>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="/super_admin/dashboard/">Dashboard</a></li>
+            <li class="breadcrumb-item active">Banner List</li>
+        </ol>
+    </div>
+    <div>
+        <a href="/super_admin/banner-create/"class="btn btn-primary btn-sm">
+            <i class="fas fa-user-plus me-1"></i>
+            Create Banner
+        </a>
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Banner Lists
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>title</th>
+                    <th>content</th>
+                    <th>link</th>
+                    <th>order</th>
+                    <th>Featured Image</th>
+                    <th>IsActive</th>
+                    <th>created at</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>#</th>
+                    <th>title</th>
+                    <th>content</th>
+                    <th>link</th>
+                    <th>order</th>
+                    <th>Featured Image</th>
+                    <th>IsActive</th>
+                    <th>created at</th>
+                    <th>Actions</th>
+                </tr>
+            </tfoot>
+            <tbody>
+
+            {% for banner in banners %}
+                <tr>
+                    <td>{{forloop.counter }}</td>
+                    <td>{{banner.title }}</td>
+                    <td>{{banner.content}}</td>
+                    <td>{{banner.link}}</td>
+                    <td>{{banner.order}}</td>
+                    <td>
+                        {% if banner.image %}
+                            <img src="{{ banner.image.url }}" alt="profile_pic" width="300">
+                        {% else %}
+                        <img src="https://mm.widyatama.ac.id/wp-content/uploads/2020/08/dummy-profile-pic-male1.jpg" alt="" width="100">
+                        {% endif %}
+                    </td>
+                    <td>{{banner.is_active }}</td>
+                    <td>{{banner.created_at }}</td>
+                    <td>
+                        <a href="/super_admin/banner-detail/{{banner.id}}/" class="btn btn-primary btn-sm">Detail</a>
+                        <a href="/super_admin/banner-update/{{banner.id}}/" class="btn btn-warning btn-sm">Update</a>
+                        <a href="/super_admin/banner-delete/{{banner.id}}/" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

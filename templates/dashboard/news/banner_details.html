@@ -1,0 +1,57 @@
+{% extends 'dashboard/dashboard_base.html' %}
+{% block css %}
+<style>
+    .header{
+        display:flex;
+        justify-content: space-between;
+    }
+    #userActive{
+        background-color: blue;
+        color: white;
+        padding-inline: 10px;
+        border-radius: 10px;
+    }
+    #userInactive{
+        background-color:red;
+        color: white;
+        padding-inline: 10px;
+        border-radius: 10px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<h1 class="mt-4">Banner Details</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/super_admin/dashboard/">Dashboard</a></li>
+    <li class="breadcrumb-item active">Banner Details</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+       Banner Details
+    </div>
+    <div class="card-body">
+        <div class ="row">
+            <div class="col-4">
+                {% if banner.image %}
+                            <img src="{{ banner.image.url }}" alt="profile_pic" width="300">
+                        {% else %}
+                        <img src="https://mm.widyatama.ac.id/wp-content/uploads/2020/08/dummy-profile-pic-male1.jpg" alt="" width="100">
+                        {% endif %}
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-6">
+                        <p>title: {{category.title}}</p>
+                        <p>content:{{banner.content}}</p>
+                        <p>link:{{banner.link}}</p>
+                        <p>order:{{banner.order}}</p>
+                        <p>is_active:{{banner.is_active}}</p>
+                        <p>created_at{{banner.created_at}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -29,22 +29,153 @@
         Create Use
     </div>
     <div class="card-body">
-        <form>
+        <form method="POST"  onsubmit="handleSubmit(event)">
+            {% csrf_token %}
+
+            <div class="mb-3">
+              <label for="exampleInputusern1" class="form-label">User Name</label>
+              <input type="text" name="username" class="form-control" id="exampleInputusern1" aria-describedby="usernHelp">
+              <div id="usernHelp" class="form-text">mention username.</div>
+              <div id="idusernameerror"></div>
+            </div> 
+
+
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              <div id="idEmailError"></div>
             </div>
+
+            <div class="mb-3">
+              <label for="exampleInputFirstN1" class="form-label">First Name</label>
+              <input type="text" name="firstname" class="form-control" id="exampleInputFirstN1" aria-describedby="FirstNHelp">
+              <div id="firstnameHelp" class="form-text">enter the first name.</div>
+               <div id="idFirstnameError"></div>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputLastN1" class="form-label">Last Name</label>
+              <input type="text" name="lastname" class="form-control" id="exampleInputLastN1" aria-describedby="LastNHelp">
+              <div id="lastnHelp" class="form-text">enter the last name.</div>
+               <div id="idLastnameError"></div>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputMobile1" class="form-label">Mobile Number</label>
+              <input type="mobile" name="mobile" class="form-control" id="exampleInputmobile1">
+              <div id="mobilenHelp" class="form-text">enter the mobile number.</div>
+               <div id="idMobileError"></div>
+            </div>
+            
+
+
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+              <div id="password" class="form-text">enter the password.</div>
+               <div id="idPasswordError"></div>
             </div>
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            
+
+            <div class="mb-3">
+              <label for="exampleInputCPassword1" class="form-label">Confirm Password</label>
+              <input type="password" name="cpassword" class="form-control" id="exampleInputCPassword1">
+              <div id="password" class="form-text">enter the confirm password.</div>
+               <div id="idcpasswordError"></div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            
+            <input type="submit" class="btn btn-primary">
+            
         </form>
     </div>
 </div>
+{% endblock %}
+
+{% block js %}
+<script>
+  function handleSubmit(event){
+
+    event.preventDefault()
+    let isFormValid=true;
+
+    let usernamevalue=document.getElementById("exampleInputusern1").value.trim();
+    let errorUsernameElement=document.getElementById("idusernameerror");
+    
+    let emailvalue=document.getElementById("exampleInputEmail1").value.trim();
+    let errorEmailElement=document.getElementById("idEmailError");
+    
+    let firstnamevalue=document.getElementById("exampleInputFirstN1").value.trim();
+    let errorFirstnameElement=document.getElementById("idFirstnameError");
+
+    let lastnamevalue=document.getElementById("exampleInputLastN1").value.trim();
+    let errorLastnameElement=document.getElementById("idLastnameError");
+
+    let mobilevalue=document.getElementById("exampleInputmobile1").value.trim();
+    let errorMobileElement=document.getElementById("idMobileError")
+
+    let passwordvalue=document.getElementById("exampleInputPassword1").value.trim();
+    let errorPasswordElement=document.getElementById("idPasswordError")
+
+    let cpasswordvalue=document.getElementById("exampleInputCPassword1").value.trim();
+    let errorCpasswordElement=document.getElementById("idcpasswordError")
+
+
+    errorUsernameElement.textContent="";
+    errorEmailElement.textContent="";
+    errorFirstnameElement.textContent="";
+    errorLastnameElement.textContent="";
+    errorMobileElement.textContent="";
+    errorPasswordElement.textContent="";
+    errorCpasswordElement.textContent="";
+
+    if(usernamevalue==""){
+      errorUsernameElement.textContent ="please enter your username";
+      errorUsernameElement.style.color="red";
+      isFormValid=false;
+    }
+
+    if(emailvalue==""){
+      errorEmailElement.textContent="please enter your email";
+      errorEmailElement.style.color="red";
+      isFormValid=false;
+    }
+
+    if(firstnamevalue==""){
+      errorFirstnameElement.textContent="please enter your first name";
+      errorFirstnameElement.style.color="red";
+      isFormValid=false;
+    }
+
+    if(lastnamevalue==""){
+      errorLastnameElement.textContent="please enter your last name";
+      errorLastnameElement.style.color="red";
+      isFormValid=false;
+    }
+
+    if(mobilevalue==""){
+      errorMobileElement.textContent="please enter your Mobile number";
+      errorMobileElement.style.color="red";
+      isFormValid=false;
+    }
+
+    if(passwordvalue==""){
+      errorPasswordElement.textContent="please enter your password";
+      errorPasswordElement.style.color="red";
+      isFormValid=false;
+    }
+
+    if(cpasswordvalue==""){
+      errorCpasswordElement.textContent="please enter your confirm password";
+      errorCpasswordElement.style.color="red";
+      isFormValid=false;
+    }
+
+    let form = event.target;
+    if(isFormValid){
+      form.submit();
+    }
+   }
+  
+ </script>
 {% endblock %}

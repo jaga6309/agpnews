@@ -1,0 +1,55 @@
+{% extends 'dashboard/dashboard_base.html' %}
+{% block css %}
+<style>
+    .header{
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+{% endblock  %}
+{% block content %}
+<h1 class="mt-4">Update Tag</h1>
+<div class="header">
+    <div>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="/super_admin/dashboard/">Dashboard</a></li>
+            <li class="breadcrumb-item active">Update Tag</li>
+        </ol>
+    </div>
+    <div>
+        <a href="/super_admin/tag-list/"class="btn btn-primary btn-sm">
+            <i class="fas fa-arrow-left me-1"></i>
+            Tag lists
+        </a>
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Update Tag
+    </div>
+    <div class="card-body">
+        <div class="card-body">
+        <form method="post" onsubmit="handleSubmit(event)" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputName" class="form-label">Name</label>
+              <input type="text" class="form-control" id="exampleInputName" name="name" value="{{tag.name}}">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputDescription" class="form-label">Description</label>
+              <input type="text-area" class="form-control" id="exampleInputDescription" name="description" value="{{tag.description}}">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFeaturedImage" class="form-label">Featured Image</label>
+              <input type="file" class="form-control" id="exampleFeaturedImage" name="featured_image" value="{{tag.featured_image}}">
+            </div>
+             <div class="mb-3 form-check">
+              <label for="exampleIsfeatured" class="form-label">Is featured</label>
+              <input type="checkbox" class="form-check-input" id="exampleIsfeatured" name="is_featured"  name="is_featured" {% if tags.is_featured %}checked {% endif %}>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

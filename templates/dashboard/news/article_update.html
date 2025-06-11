@@ -1,0 +1,98 @@
+{% extends 'dashboard/dashboard_base.html' %}
+{% block css %}
+    <style>
+        .header{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style> 
+{% endblock  %}
+{% block content %}
+<h1 class="mt-4">Update Article</h1>
+<div class="header">
+    <div>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="/super_admin/dashboard/">Dashboard</a></li>
+            <li class="breadcrumb-item active">Update Article</li>
+        </ol>
+    </div>
+    <div>
+        <a href="/super_admin/article-list/"class="btn btn-primary btn-sm">
+            <i class="fas fa-arrow-left me-1"></i>
+            Article lists
+        </a>
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Update Article
+    </div>
+    <div class="card-body">
+      <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="idTitle" class="form-label">Title</label>
+                <input type="text" class="form-control" id="idTitle" name="title" value="{{ article.title }}">
+            </div>
+            <div class="mb-3">
+                <label for="idContent" class="form-label">Content</label>
+                <textarea type="idContent" class="form-control" id="idContent" name="content">{{ article.content }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="idCategory" class="form-label">Category</label>
+                <select class="form-select" aria-label="Default select example" name="category"  value="{{ article.category }}">
+                    {% for category in categories %}
+                        <option value="{{category.id}}"{% if article.category == category %}selected{% endif %}>{{category.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="idTags" class="form-label">Tags</label>
+                <select class="form-select" multiple aria-label="Multiple select example" name="tags" value="{{ article.tags }}">
+                    {% for tag in tags %}
+                        <option value="{{tag.id}}"{% if tag in  article.tags.all %}selected{% endif %}>{{tag.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="idStatus" class="form-label">Status</label>
+                <select class="form-select" aria-label="Default select example" name="status" value="{{ article.status }}">
+                    {% for value, label  in status_choices %}
+                        <option value="{{value}}">{{label}}</option>
+                    {% endfor %}
+                </select>
+                 <div class="mb-3 form-check">
+              <label for="exampleIsActive" class="form-label">Is breaking</label>
+              <input type="checkbox" class="form-check-input" id="exampleIsActive" name="Is_breaking"  value="{{ article.Is_breaking }}">
+            </div>
+             <div class="mb-3 form-check">
+              <label for="exampleIsActive" class="form-label">trending </label>
+              <input type="checkbox" class="form-check-input" id="exampleIsActive" name="Is_trending" {% if article.Is_trending %}checked{% endif %}>
+            </div>
+             <div class="mb-3 form-check">
+              <label for="exampleIsActive" class="form-label">featured</label>
+              <input type="checkbox" class="form-check-input" id="exampleIsActive" name="Is_featured" value="{{ article.Is_featured }}">
+            </div>
+            <div class="mb-3 form-check">
+              <label for="exampleIsActive" class="form-label">sponsered</label>
+              <input type="checkbox" class="form-check-input" id="exampleIsActive" name="is_sponsered" value="{{ article.is_sponsered }}">
+            </div>
+             <div class="mb-3 form-check">
+              <label for="exampleIsActive" class="form-label">allow_comments</label>
+              <input type="checkbox" class="form-check-input" id="exampleIsActive" name="allow_comments" {% if article.allow_comments %}checked{% endif %}>
+            </div>
+             <div class="mb-3">
+                <label for="idreading_time" class="form-label">Reading_time</label>
+                <input type="text" class="form-control" id="idReading_time" name="Reading_time" value="{{ article.Reading_time }}">
+            </div>
+             <div class="mb-3">
+                <label for="idTitle" class="form-label">Published_at</label>
+                <input type="text" class="form-control" id="idTitle" name="published_at" value="{{ article.published_at }}">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

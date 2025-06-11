@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from users.models import Profile
+# from users.models import Profile
 
 def user_register_view(request):
     if request.method=="POST":
@@ -22,7 +22,7 @@ def user_register_view(request):
             messages.warning(request, "The username you given is already taken")
             return redirect("/users/register/")
         usr = User.objects.create_user(username=usern, email=em, first_name=firstn, last_name=lastn, password=pswd)
-        Profile.objects.create(mobile=mob, user=usr, profile_pic=pic)
+        # Profile.objects.create(mobile=mob, user=usr, profile_pic=pic)
         messages.success(request, "Your account ah been created successfully.")
     return render(request, "users/user_register.html")  
 

@@ -1,0 +1,82 @@
+{% extends 'dashboard/dashboard_base.html' %}
+{% block title %}AGPNEWS - tag Lists{% endblock %}
+{% block css %}
+    <style>
+        .header{
+            display: flex;
+            justify-content: space-between;
+        }
+        
+    </style>
+{% endblock  %}
+{% block content %}
+<h1 class="mt-4">tag Lists</h1>
+<div class="header">
+    <div>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="/super_admin/dashboard/">Dashboard</a></li>
+            <li class="breadcrumb-item active">tag List</li>
+        </ol>
+    </div>
+    <div>
+        <a href="/super_admin/tag-create/"class="btn btn-primary btn-sm">
+            <i class="fas fa-user-plus me-1"></i>
+            Create tag
+        </a>
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        tag Lists
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>IsActive</th>
+                    <th>Featured Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>IsActive</th>
+                    <th>Featured Image</th>
+                    <th>Actions</th>
+                </tr>
+            </tfoot>
+            <tbody>
+
+            {% for tag in tags %}
+                <tr>
+                    <td>{{forloop.counter }}</td>
+                    <td>{{tag.name }}</td>
+                    <td>{{tag.description}}</td>
+                    <td>{{tag.is_featured }}</td>
+                    <td>
+                        {% if tag.featured_image %}
+                            <img src="{{ tag.featured_image.url }}" alt="profile_pic" width="100">
+                        {% else %}
+                        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2FHinataHyuga2000%2F&psig=AOvVaw3xSNeElY8-FIMMu6ssxZPk&ust=1748504088142000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCJiAtPPTxY0DFQAAAAAdAAAAABAM" alt="" width="100">
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="/super_admin/tag-details/{{tag.id}}/" class="btn btn-primary btn-sm">Details</a>
+                        <a href="/super_admin/tag-update/{{tag.id}}/" class="btn btn-warning btn-sm">Update</a>
+                        <a href="/super_admin/tag-delete/{{tag.id}}/" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

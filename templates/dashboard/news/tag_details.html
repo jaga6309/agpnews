@@ -1,0 +1,55 @@
+{% extends 'dashboard/dashboard_base.html' %}
+{% block css %}
+<style>
+    .header{
+        display:flex;
+        justify-content: space-between;
+    }
+    #userActive{
+        background-color: blue;
+        color: white;
+        padding-inline: 10px;
+        border-radius: 10px;
+    }
+    #userInactive{
+        background-color:red;
+        color: white;
+        padding-inline: 10px;
+        border-radius: 10px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<h1 class="mt-4">tag Details</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/super_admin/dashboard/">Dashboard</a></li>
+    <li class="breadcrumb-item active">tag Details</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        tag Details
+    </div>
+    <div class="card-body">
+        <div class ="row">
+            <div class="col-4">
+                {% if tag.featured_image %}
+                    <img src="{{ tag.featured_image.url }}" alt="profile_pic" width="200">
+                {% else %}
+                {% endif %}
+                <p>Name: {{tag.name}}</p>
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-6">
+                        <p>Name: {{tag.name}}</p>
+                        <p>description:  {{tag.description}}</p>
+                        <p>Is_featured: {{tag.Is_featured}}</p>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

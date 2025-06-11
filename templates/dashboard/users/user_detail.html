@@ -1,496 +1,67 @@
 {% extends 'dashboard/dashboard_base.html' %}
+{% block css %}
+<style>
+    .header{
+        display:flex;
+        justify-content: space-between;
+    }
+    #userActive{
+        background-color: blue;
+        color: white;
+        padding-inline: 10px;
+        border-radius: 10px;
+    }
+    #userInactive{
+        background-color:red;
+        color: white;
+        padding-inline: 10px;
+        border-radius: 10px;
+    }
+</style>
+{% endblock %}
 {% block content %}
-<h1 class="mt-4">Tables</h1>
+<h1 class="mt-4">User Details</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item"><a href="/super_admin/dashboard/">Dashboard</a></li>
-    <li class="breadcrumb-item active">Tables</li>
+    <li class="breadcrumb-item active">User Details</li>
 </ol>
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        DataTable Example
+        User Details
     </div>
     <div class="card-body">
-        <table id="datatablesSimple">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
-                </tr>
-            </thead>
-            <tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
-                </tr>
-            </tfoot>
-            <tbody>
-                <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                </tr>
-                <tr>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011/07/25</td>
-                    <td>$170,750</td>
-                </tr>
-                <tr>
-                    <td>Ashton Cox</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                    <td>2009/01/12</td>
-                    <td>$86,000</td>
-                </tr>
-                <tr>
-                    <td>Cedric Kelly</td>
-                    <td>Senior Javascript Developer</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>2012/03/29</td>
-                    <td>$433,060</td>
-                </tr>
-                <tr>
-                    <td>Airi Satou</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>33</td>
-                    <td>2008/11/28</td>
-                    <td>$162,700</td>
-                </tr>
-                <tr>
-                    <td>Brielle Williamson</td>
-                    <td>Integration Specialist</td>
-                    <td>New York</td>
-                    <td>61</td>
-                    <td>2012/12/02</td>
-                    <td>$372,000</td>
-                </tr>
-                <tr>
-                    <td>Herrod Chandler</td>
-                    <td>Sales Assistant</td>
-                    <td>San Francisco</td>
-                    <td>59</td>
-                    <td>2012/08/06</td>
-                    <td>$137,500</td>
-                </tr>
-                <tr>
-                    <td>Rhona Davidson</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>2010/10/14</td>
-                    <td>$327,900</td>
-                </tr>
-                <tr>
-                    <td>Colleen Hurst</td>
-                    <td>Javascript Developer</td>
-                    <td>San Francisco</td>
-                    <td>39</td>
-                    <td>2009/09/15</td>
-                    <td>$205,500</td>
-                </tr>
-                <tr>
-                    <td>Sonya Frost</td>
-                    <td>Software Engineer</td>
-                    <td>Edinburgh</td>
-                    <td>23</td>
-                    <td>2008/12/13</td>
-                    <td>$103,600</td>
-                </tr>
-                <tr>
-                    <td>Jena Gaines</td>
-                    <td>Office Manager</td>
-                    <td>London</td>
-                    <td>30</td>
-                    <td>2008/12/19</td>
-                    <td>$90,560</td>
-                </tr>
-                <tr>
-                    <td>Quinn Flynn</td>
-                    <td>Support Lead</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>2013/03/03</td>
-                    <td>$342,000</td>
-                </tr>
-                <tr>
-                    <td>Charde Marshall</td>
-                    <td>Regional Director</td>
-                    <td>San Francisco</td>
-                    <td>36</td>
-                    <td>2008/10/16</td>
-                    <td>$470,600</td>
-                </tr>
-                <tr>
-                    <td>Haley Kennedy</td>
-                    <td>Senior Marketing Designer</td>
-                    <td>London</td>
-                    <td>43</td>
-                    <td>2012/12/18</td>
-                    <td>$313,500</td>
-                </tr>
-                <tr>
-                    <td>Tatyana Fitzpatrick</td>
-                    <td>Regional Director</td>
-                    <td>London</td>
-                    <td>19</td>
-                    <td>2010/03/17</td>
-                    <td>$385,750</td>
-                </tr>
-                <tr>
-                    <td>Michael Silva</td>
-                    <td>Marketing Designer</td>
-                    <td>London</td>
-                    <td>66</td>
-                    <td>2012/11/27</td>
-                    <td>$198,500</td>
-                </tr>
-                <tr>
-                    <td>Paul Byrd</td>
-                    <td>Chief Financial Officer (CFO)</td>
-                    <td>New York</td>
-                    <td>64</td>
-                    <td>2010/06/09</td>
-                    <td>$725,000</td>
-                </tr>
-                <tr>
-                    <td>Gloria Little</td>
-                    <td>Systems Administrator</td>
-                    <td>New York</td>
-                    <td>59</td>
-                    <td>2009/04/10</td>
-                    <td>$237,500</td>
-                </tr>
-                <tr>
-                    <td>Bradley Greer</td>
-                    <td>Software Engineer</td>
-                    <td>London</td>
-                    <td>41</td>
-                    <td>2012/10/13</td>
-                    <td>$132,000</td>
-                </tr>
-                <tr>
-                    <td>Dai Rios</td>
-                    <td>Personnel Lead</td>
-                    <td>Edinburgh</td>
-                    <td>35</td>
-                    <td>2012/09/26</td>
-                    <td>$217,500</td>
-                </tr>
-                <tr>
-                    <td>Jenette Caldwell</td>
-                    <td>Development Lead</td>
-                    <td>New York</td>
-                    <td>30</td>
-                    <td>2011/09/03</td>
-                    <td>$345,000</td>
-                </tr>
-                <tr>
-                    <td>Yuri Berry</td>
-                    <td>Chief Marketing Officer (CMO)</td>
-                    <td>New York</td>
-                    <td>40</td>
-                    <td>2009/06/25</td>
-                    <td>$675,000</td>
-                </tr>
-                <tr>
-                    <td>Caesar Vance</td>
-                    <td>Pre-Sales Support</td>
-                    <td>New York</td>
-                    <td>21</td>
-                    <td>2011/12/12</td>
-                    <td>$106,450</td>
-                </tr>
-                <tr>
-                    <td>Doris Wilder</td>
-                    <td>Sales Assistant</td>
-                    <td>Sidney</td>
-                    <td>23</td>
-                    <td>2010/09/20</td>
-                    <td>$85,600</td>
-                </tr>
-                <tr>
-                    <td>Angelica Ramos</td>
-                    <td>Chief Executive Officer (CEO)</td>
-                    <td>London</td>
-                    <td>47</td>
-                    <td>2009/10/09</td>
-                    <td>$1,200,000</td>
-                </tr>
-                <tr>
-                    <td>Gavin Joyce</td>
-                    <td>Developer</td>
-                    <td>Edinburgh</td>
-                    <td>42</td>
-                    <td>2010/12/22</td>
-                    <td>$92,575</td>
-                </tr>
-                <tr>
-                    <td>Jennifer Chang</td>
-                    <td>Regional Director</td>
-                    <td>Singapore</td>
-                    <td>28</td>
-                    <td>2010/11/14</td>
-                    <td>$357,650</td>
-                </tr>
-                <tr>
-                    <td>Brenden Wagner</td>
-                    <td>Software Engineer</td>
-                    <td>San Francisco</td>
-                    <td>28</td>
-                    <td>2011/06/07</td>
-                    <td>$206,850</td>
-                </tr>
-                <tr>
-                    <td>Fiona Green</td>
-                    <td>Chief Operating Officer (COO)</td>
-                    <td>San Francisco</td>
-                    <td>48</td>
-                    <td>2010/03/11</td>
-                    <td>$850,000</td>
-                </tr>
-                <tr>
-                    <td>Shou Itou</td>
-                    <td>Regional Marketing</td>
-                    <td>Tokyo</td>
-                    <td>20</td>
-                    <td>2011/08/14</td>
-                    <td>$163,000</td>
-                </tr>
-                <tr>
-                    <td>Michelle House</td>
-                    <td>Integration Specialist</td>
-                    <td>Sidney</td>
-                    <td>37</td>
-                    <td>2011/06/02</td>
-                    <td>$95,400</td>
-                </tr>
-                <tr>
-                    <td>Suki Burks</td>
-                    <td>Developer</td>
-                    <td>London</td>
-                    <td>53</td>
-                    <td>2009/10/22</td>
-                    <td>$114,500</td>
-                </tr>
-                <tr>
-                    <td>Prescott Bartlett</td>
-                    <td>Technical Author</td>
-                    <td>London</td>
-                    <td>27</td>
-                    <td>2011/05/07</td>
-                    <td>$145,000</td>
-                </tr>
-                <tr>
-                    <td>Gavin Cortez</td>
-                    <td>Team Leader</td>
-                    <td>San Francisco</td>
-                    <td>22</td>
-                    <td>2008/10/26</td>
-                    <td>$235,500</td>
-                </tr>
-                <tr>
-                    <td>Martena Mccray</td>
-                    <td>Post-Sales support</td>
-                    <td>Edinburgh</td>
-                    <td>46</td>
-                    <td>2011/03/09</td>
-                    <td>$324,050</td>
-                </tr>
-                <tr>
-                    <td>Unity Butler</td>
-                    <td>Marketing Designer</td>
-                    <td>San Francisco</td>
-                    <td>47</td>
-                    <td>2009/12/09</td>
-                    <td>$85,675</td>
-                </tr>
-                <tr>
-                    <td>Howard Hatfield</td>
-                    <td>Office Manager</td>
-                    <td>San Francisco</td>
-                    <td>51</td>
-                    <td>2008/12/16</td>
-                    <td>$164,500</td>
-                </tr>
-                <tr>
-                    <td>Hope Fuentes</td>
-                    <td>Secretary</td>
-                    <td>San Francisco</td>
-                    <td>41</td>
-                    <td>2010/02/12</td>
-                    <td>$109,850</td>
-                </tr>
-                <tr>
-                    <td>Vivian Harrell</td>
-                    <td>Financial Controller</td>
-                    <td>San Francisco</td>
-                    <td>62</td>
-                    <td>2009/02/14</td>
-                    <td>$452,500</td>
-                </tr>
-                <tr>
-                    <td>Timothy Mooney</td>
-                    <td>Office Manager</td>
-                    <td>London</td>
-                    <td>37</td>
-                    <td>2008/12/11</td>
-                    <td>$136,200</td>
-                </tr>
-                <tr>
-                    <td>Jackson Bradshaw</td>
-                    <td>Director</td>
-                    <td>New York</td>
-                    <td>65</td>
-                    <td>2008/09/26</td>
-                    <td>$645,750</td>
-                </tr>
-                <tr>
-                    <td>Olivia Liang</td>
-                    <td>Support Engineer</td>
-                    <td>Singapore</td>
-                    <td>64</td>
-                    <td>2011/02/03</td>
-                    <td>$234,500</td>
-                </tr>
-                <tr>
-                    <td>Bruno Nash</td>
-                    <td>Software Engineer</td>
-                    <td>London</td>
-                    <td>38</td>
-                    <td>2011/05/03</td>
-                    <td>$163,500</td>
-                </tr>
-                <tr>
-                    <td>Sakura Yamamoto</td>
-                    <td>Support Engineer</td>
-                    <td>Tokyo</td>
-                    <td>37</td>
-                    <td>2009/08/19</td>
-                    <td>$139,575</td>
-                </tr>
-                <tr>
-                    <td>Thor Walton</td>
-                    <td>Developer</td>
-                    <td>New York</td>
-                    <td>61</td>
-                    <td>2013/08/11</td>
-                    <td>$98,540</td>
-                </tr>
-                <tr>
-                    <td>Finn Camacho</td>
-                    <td>Support Engineer</td>
-                    <td>San Francisco</td>
-                    <td>47</td>
-                    <td>2009/07/07</td>
-                    <td>$87,500</td>
-                </tr>
-                <tr>
-                    <td>Serge Baldwin</td>
-                    <td>Data Coordinator</td>
-                    <td>Singapore</td>
-                    <td>64</td>
-                    <td>2012/04/09</td>
-                    <td>$138,575</td>
-                </tr>
-                <tr>
-                    <td>Zenaida Frank</td>
-                    <td>Software Engineer</td>
-                    <td>New York</td>
-                    <td>63</td>
-                    <td>2010/01/04</td>
-                    <td>$125,250</td>
-                </tr>
-                <tr>
-                    <td>Zorita Serrano</td>
-                    <td>Software Engineer</td>
-                    <td>San Francisco</td>
-                    <td>56</td>
-                    <td>2012/06/01</td>
-                    <td>$115,000</td>
-                </tr>
-                <tr>
-                    <td>Jennifer Acosta</td>
-                    <td>Junior Javascript Developer</td>
-                    <td>Edinburgh</td>
-                    <td>43</td>
-                    <td>2013/02/01</td>
-                    <td>$75,650</td>
-                </tr>
-                <tr>
-                    <td>Cara Stevens</td>
-                    <td>Sales Assistant</td>
-                    <td>New York</td>
-                    <td>46</td>
-                    <td>2011/12/06</td>
-                    <td>$145,600</td>
-                </tr>
-                <tr>
-                    <td>Hermione Butler</td>
-                    <td>Regional Director</td>
-                    <td>London</td>
-                    <td>47</td>
-                    <td>2011/03/21</td>
-                    <td>$356,250</td>
-                </tr>
-                <tr>
-                    <td>Lael Greer</td>
-                    <td>Systems Administrator</td>
-                    <td>London</td>
-                    <td>21</td>
-                    <td>2009/02/27</td>
-                    <td>$103,500</td>
-                </tr>
-                <tr>
-                    <td>Jonas Alexander</td>
-                    <td>Developer</td>
-                    <td>San Francisco</td>
-                    <td>30</td>
-                    <td>2010/07/14</td>
-                    <td>$86,500</td>
-                </tr>
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td>Edinburgh</td>
-                    <td>51</td>
-                    <td>2008/11/13</td>
-                    <td>$183,000</td>
-                </tr>
-                <tr>
-                    <td>Michael Bruce</td>
-                    <td>Javascript Developer</td>
-                    <td>Singapore</td>
-                    <td>29</td>
-                    <td>2011/06/27</td>
-                    <td>$183,000</td>
-                </tr>
-                <tr>
-                    <td>Donna Snider</td>
-                    <td>Customer Support</td>
-                    <td>New York</td>
-                    <td>27</td>
-                    <td>2011/01/25</td>
-                    <td>$112,000</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class ="row">
+            <div class="col-4">
+                {% if user.profile.profile_pic %}
+                    <img src="{{ user.profile.profile_pic.url }}" alt="profile_pic" width="200">
+                {% else %}
+                    <img src=data:image/jpeg;base64,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>
+                {% endif %}
+                <p>Username: {{user.username}}</p>
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-6">
+                        <p>First Name: {{user.first_name}}</p>
+                        <p>Last Name:  {{user.last_name}}</p>
+                        <p>Email Address: {{user.email}}</p>
+                        <p>Joined Date: {{user.date_joined}}</p>
+                    </div>
+                    <div class="col-6">
+                        <p>Mobile: {{user.profile.mobile}}</p>
+                        <p>Active Status:
+                             {% if not user is active %}
+                                <span id="userActive">Active</span>
+                            {% else %}
+                                <span id="userInactive">Inactive</span>
+                            {% endif %}
+                        <p>Last logged In: {{user.last_login}}</p>
+                        <p>SuperUser Status: {{user.is_superuser}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-{% endblock %}
+{% endblock %}
