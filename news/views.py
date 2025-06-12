@@ -12,4 +12,4 @@ def home_view(request):
 
 def article_detail_view(request, pk):
     article = Article.objects.get(id=pk)
-    return render(request, "template/news/article_details.html",{'article': article})
+    return render(request, "news/article_details.html",{'article': article})
