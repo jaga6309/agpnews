@@ -1,7 +1,7 @@
 AGP News Web Application
 Technologies: Python, Django, SQLite3, HTML, CSS, Bootstrap, JavaScript, CKEditor5
 Duration: 1 month (Ongoing)
-GitHub:https://github.com/jaga6309/agpnews 
+
 
 Developed a responsive, full-featured news portal using Django, with clean MVT architecture and SQLite3 database.
 
